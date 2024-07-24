@@ -6,7 +6,8 @@
     "nx": "nx",
     "serve:front": "nx serve front-app",
     "serve:back": "nx serve back-app",
-    "build:back": "nx build back-app"
+    "build:back": "nx build back-app",
+    "build:front": "nx build front-app"
   },
   "private": true,
   "dependencies": {
