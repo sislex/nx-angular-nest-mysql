@@ -11,10 +11,10 @@ COPY package.json package-lock.json ./
 RUN npm install --production
 
 # Копируем папку с результатами сборки в рабочую директорию
-COPY ../dist/apps/back-app ./dist
+COPY ../dist/apps/back-app .
 
 # Экспонируем порт, на котором будет работать приложение
 EXPOSE 3000
 
 # Определяем команду для запуска приложения
-CMD ["node", "dist/main"]
+CMD ["node", "main.js"]

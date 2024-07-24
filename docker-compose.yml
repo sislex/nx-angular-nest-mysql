@@ -12,38 +12,38 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
-#
-#  phpmyadmin:
-#    image: phpmyadmin/phpmyadmin
-#    container_name: phpmyadmin
-#    environment:
-#      PMA_HOST: mysql
-#      PMA_PORT: 3306
-#      MYSQL_ROOT_PASSWORD: root
-#    ports:
-#      - '8080:80'
-#    depends_on:
-#      - mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '8080:80'
+    depends_on:
+      - mysql
 #
 #  frontend:
 #    build:
 #      context: .
-#      dockerfile: docker/Dockerfile.frontend
+#      dockerfile: docker/Dockerfile.backend.frontend
 #    container_name: frontend_app
 #    ports:
 #      - '4200:4200'
 #    depends_on:
 #      - mysql
 
-  backend:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.backend
-    container_name: backend_app
-    ports:
-      - '3000:3000'
-    depends_on:
-      - mysql
+#  backend:
+#    build:
+#      context: .
+#      dockerfile: docker/Dockerfile.backend
+#    container_name: backend_app
+#    ports:
+#      - '3000:3000'
+#    depends_on:
+#      - mysql
 
 volumes:
   mysql-data:
