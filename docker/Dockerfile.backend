@@ -4,17 +4,17 @@ FROM node:20.14
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем package.json и package-lock.json для установки зависимостей
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 # Устанавливаем зависимости
-RUN npm install --production
+RUN npm install
 
-# Копируем папку с результатами сборки в рабочую директорию
+# Копируем файлы проекта
 COPY ../dist/apps/back-app .
 
-# Экспонируем порт, на котором будет работать приложение
+# Открываем порт для Node.js
 EXPOSE 3000
 
-# Определяем команду для запуска приложения
+# Команда для запуска приложения
 CMD ["node", "main.js"]
+

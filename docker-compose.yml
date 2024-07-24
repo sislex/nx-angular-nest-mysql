@@ -6,7 +6,7 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: BD1
+      MYSQL_DATABASE: test_bd
     ports:
       - '3306:3306'
     volumes:
@@ -44,6 +44,12 @@ services:
 #      - '3000:3000'
 #    depends_on:
 #      - mysql
+#    environment:
+#      DB_HOST: mysql
+#      DB_PORT: 3306
+#      DB_USERNAME: root
+#      DB_PASSWORD: root
+#      DB_DATABASE: test_db
 
 volumes:
   mysql-data:
