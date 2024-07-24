@@ -1,0 +1,17 @@
+# Используем официальный образ Node.js версии 20.14
+FROM node:20.14
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Устанавливаем serve
+RUN npm install -g serve
+
+# Копируем файлы проекта
+COPY ../dist/apps/front-app/browser .
+
+# Открываем порт для Node.js
+EXPOSE 4200
+
+# Команда для запуска приложения
+CMD ["serve", "-s", ".", "-l", "4200"]

@@ -1,0 +1,20 @@
+# Используем официальный образ Node.js версии 20.14
+FROM node:20.14
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем package.json и package-lock.json для установки зависимостей
+COPY package.json package-lock.json ./
+
+# Устанавливаем зависимости
+RUN npm install --production
+
+# Копируем папку с результатами сборки в рабочую директорию
+COPY ../dist/apps/back-app ./dist
+
+# Экспонируем порт, на котором будет работать приложение
+EXPOSE 3000
+
+# Определяем команду для запуска приложения
+CMD ["node", "dist/main"]
